@@ -16,69 +16,6 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-
-# #  Model for the first task is from langchain to make use of duckduckgo 
-# #  search and its multiple advantages. Also this model will be used for the first task
-
-
-# os.environ["SERPAPI_API_KEY"] = 'AIzaSyAbOolM9L9KwJpzu1SQD5T_nBe2CVOuCpE'
-
-# model = ChatGoogleGenerativeAI(model="gemini-pro", 
-#                              temperature=0.7,
-#                              google_api_key='AIzaSyAbOolM9L9KwJpzu1SQD5T_nBe2CVOuCpE')
-
-
-# tool = GoogleJobsQueryRun(api_wrapper=GoogleJobsAPIWrapper())
-# tools_1=load_tools(["ddg-search"], llm=model)
-# tools_2=load_tools(["ddg-search"], llm=model)
-
-
-# PREFIX = """Your tasks is to provide a list of opportutnities offered by the company Google. 
-# You have access to the following tools:
-# duckduckgo_search: A wrapper around DuckDuckGo Search. Useful for when you need to answer 
-# questions about current events. Input should be a search query.
-# """
-# ASPIRATIONS = """{aspirations}"""
-# PASSIONS = """{passions} """
-# FORMAT_INSTRUCTIONS = """Use the following format:
-
-# Question: the input question you must answer
-# Thought: you should always think about what to do
-# Action: the action to take, should be one of [{duckduckgo_search}]
-# Action Input: the input to the action
-# Observation: the result of the action
-# ... (this Thought/Action/Action Input/Observation can repeat N times)
-# Thought: I now know the final answer
-# Final Answer: the final answer to the original input question"""
-# SUFFIX = """Begin!
-
-# Question: {input}
-# Thought:{agent_scratchpad}"""
-
-# agent=initialize_agent(agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION,
-#                        tools=tools_1, 
-#                        llm=model, 
-#                        agents_kwargs={
-#                                       'prefix':PREFIX,
-#                                       'aspiration': ASPIRATIONS,
-#                                       'passions':PASSIONS,
-#                                       'format_instructions':FORMAT_INSTRUCTIONS,
-#                                       'suffix':SUFFIX})
-
-# agent_2=initialize_agent(agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION,
-#                        tools=tools_2, 
-#                        llm=model, 
-#                        agents_kwargs={
-#                                       'prefix':PREFIX,
-#                                       'aspiration': ASPIRATIONS,
-#                                       'passions':PASSIONS,
-#                                       'format_instructions':FORMAT_INSTRUCTIONS,
-#                                       'suffix':SUFFIX})
-
-
-# # Model for the seconf task is from google generativeai.
-# # Also this model will be used for the first task
-
 genai.configure(api_key = os.environ['GOOGLE_API_KEY'])
 
 model_1 = genai.GenerativeModel('gemini-pro')
